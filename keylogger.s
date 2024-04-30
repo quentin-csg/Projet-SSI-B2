@@ -3,7 +3,7 @@ SECTION .data
     event_keyboard db "/dev/input/event0", 0
 
 SECTION .bss
-    input_event resb 16
+    input_event resb 16    # 16 bytes récupérer en hexadécimal ( 8 premiers -> temps etc ... -> 2 suivant = event type -> 2 suivant = code type -> 4 suivant = valeur input)
 
 
 SECTION .text
@@ -25,3 +25,11 @@ _start:
     int 0x80
 
     mov edi, eax 
+
+input:
+
+    mov edx, 16
+    mov ecx, input_event
+    mov ebx, esi                    ; File descriptor for reading bytes
+    mov eax, 3                      ; SYS_READ
+    int 0x80
