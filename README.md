@@ -1,4 +1,4 @@
-## Project Labo SSI
+## Project Labo SSI
 
 Projet réalisé durant notre 2nd année qui a comme objectif d'acquérir des compétences dans la programmation de langage de bas niveau
 
