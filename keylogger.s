@@ -40,6 +40,7 @@ erreur:
     mov edx, lenErrMsg
     int 0x80
 
+    mov ebx, 0              ; 0 = sortie normale
     mov eax, 1              ; sys_exit
     int 0x80
     ret
