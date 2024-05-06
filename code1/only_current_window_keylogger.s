@@ -2,7 +2,7 @@ section .data
     filename db "output.txt", 0
 
 section .bss
-    fd resq 1             ; Change from resd to resq for 64-bit
+    fd resq 1
     user_input resb 256
 
 section .text
@@ -21,7 +21,7 @@ createFile:
     mov rax, 2
     mov rdi, filename
     mov rsi, 0102o
-    mov rdx, 0666o        ; Corrected permission format
+    mov rdx, 0666o
     syscall
 
     mov [fd], rax
