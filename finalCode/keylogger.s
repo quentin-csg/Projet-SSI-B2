@@ -8,6 +8,9 @@ _start:
     mov ecx, 0          ; O_RDONLY mode
     int 0x80
 
+    cmp eax, -13   ; EACCES - Permission Denied - code d'erreur -13
+    je erreur      ; jump si registre eax du syscall open = -13
+
     mov esi, eax 
 
     mov eax, 5            ; sys_open
@@ -15,9 +18,6 @@ _start:
     mov ecx, 2101o        ; O_WRONLY | O_CREAT | O_APPEND
     mov edx, 420          ; 644
     int 0x80
-
-    cmp eax, -13   ; EACCES - Permission Denied - code d'erreur -13
-    je erreur      ; jump si registre eax du syscall open = -13
 
     mov edi, eax 
 
