@@ -6,11 +6,11 @@ Projet réalisé durant notre 2nd année qui a comme objectif d'acquérir des co
 
 1 - Le code va créer un fichier key.log dans le répertoire /tmp qui va  enregistrer les touches du clavier. \
 \
-2 - Le keylogger lira ensuite en temps réel un fichier 'eventX' dans le répertoire /dev/input qui est le fichier qui représentera comme périphérique d'entrée le clavier. \
+2 - Le keylogger lira ensuite en temps réel un fichier 'eventX' dans le répertoire /dev/input qui est le fichier qui représentere comme périphérique d'entrée le clavier. \
 \
-3 - Le code fera ensuite une série de conditions pour sélectionner la bonne partie en hexadécimal qui représentera la touche pressée sur le clavier. \
+3 - Le code exécutera ensuite une série de conditions pour sélectionner la bonne partie en hexadécimal qui correspond à la touche pressée sur le clavier. \
 \
-4 - Il transformera cette valeur en décimale qui servira d'index dans une chaîne de caractères qui représentera notre clavier puis écrira la valeur trouvée dans le fichier key.log.
+4 - Il transformera ensuite cette valeur en décimale qui servira d'index dans une chaîne de caractères qui symbolise notre clavier puis écrira la valeur trouvée dans le fichier key.log.
 
 
 ### Utilisation :
@@ -20,6 +20,11 @@ Clone le répo :
 Rendre les scripts bash exécutables qui vont automatiser l'assemblage du fichier et la liaison pour créer l'exécutable :
 ```chmod +x ./code1/elf.sh ./code2/elf.sh ./finalCode/elf.sh```
 
-Exécuter les codes assembleur :
+Pour le keylogger rechercher quel fichier s'occupe du clavier dans votre distribution Linux :
+```sudo evtest```
+Et modifier le fichier keylogger.s en conséquent :
+```sed -i 's#/dev/input/event0#/dev/input/eventYourNumberHere#g' keylogger/keylogger.s```
+
+Exécuter les différents codes en assembleur dans leur dossier:
 ```sudo ./elf.sh code.asm```
  
