@@ -18,17 +18,17 @@ input_loop:
     jmp input_loop
 
 createFile:
-    mov rax, 2
+    mov rax, 2           ; sys_open
     mov rdi, filename
-    mov rsi, 0102o
-    mov rdx, 0666o
+    mov rsi, 0102o   ; O_CREAT  S_IXUSR | S_IWOTH
+    mov rdx, 0644o
     syscall
 
     mov [fd], rax
     ret
 
 readInput:
-    mov rax, 0
+    mov rax, 0          ; sys_read
     mov rdi, 0
     mov rsi, user_input
     mov rdx, 256
@@ -36,7 +36,7 @@ readInput:
     ret
 
 writeInput:
-    mov rax, 1
+    mov rax, 1          ; sys_write
     mov rdi, [fd]
     mov rsi, user_input
     mov rdx, 256
@@ -51,13 +51,13 @@ checkExit:
     ret
 
 closeFile:
-    mov rax, 3
+    mov rax, 3      ; sys_close
     mov rdi, [fd]
     syscall
     jmp Exit
     ret
 
 Exit:
-    mov rax, 60
+    mov rax, 60      ; sys_exit
     xor rdi, rdi
     syscall
