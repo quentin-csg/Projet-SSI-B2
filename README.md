@@ -18,9 +18,9 @@ Clone le répo :
 
 ```git clone https://github.com/quentin-csg/Projet-SSI-B2.git```
 
-Rendre les scripts bash exécutables qui vont automatiser l'assemblage du fichier et la liaison pour créer l'exécutable :
+Rendre les scripts bash exécutables qui vont ensuite automatiser l'assemblage du fichier et la liaison pour créer l'exécutable :
 
-```chmod +x ./code1/elf.sh ./code2/elf.sh ./finalCode/elf.sh```
+```chmod +x ./code1/elf.sh ./code2/elf.sh ./keylogger/elf.sh```
 
 Pour le keylogger rechercher quel fichier s'occupe du clavier dans votre distribution Linux :
 
@@ -32,5 +32,5 @@ Et modifier le fichier keylogger.s en conséquent :
 
 Exécuter les différents codes en assembleur dans leur dossier: 
 
-```sudo ./elf.sh code.asm```
+```sudo ./elf.sh code.s```
  
