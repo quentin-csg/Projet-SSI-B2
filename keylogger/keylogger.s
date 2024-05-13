@@ -50,7 +50,7 @@ input:
 
     pop eax                         ; supp le caractère de la stack
 
-    jmp input
+    jmp input       ; and again
 
     mov eax, 1              ; sys_exit
     mov ebx, 0              ; 0 = sortie normale
