@@ -15,8 +15,8 @@ _start:
 
     mov eax, 5            ; sys_open
     mov ebx, output_file
-    mov ecx, 2101o        ; O_WRONLY | O_CREAT | O_APPEND
-    mov edx, 420          ; 644
+    mov ecx, 01089         ; ou 02101o en octal O_WRONLY  (01 en octal ou 1 en décimal) | O_CREAT (0100 en octal ou 64) | O_APPEND (02000 en octal ou 1024) 
+    mov edx, 0644o          ; ou 420 en octal -> 0∗512+6∗64+4∗8+4∗1=0420 en octal
     int 0x80
 
     mov edi, eax 
